@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        background-origin: HTML elementine atanmış olan
+        arkaplan resminin başlangıç konumunu belirler.
+
+        değerler: padding-box,border-box,content-box,
+        initial, inherit
+
+        padding-box: dolgu kutusu
+
+        border-box:kenarlık kutusu
+
+        content-box: içerik kutusu
+
+        **---**--**---**
+
+        background-clip: HTML elementine atanmış olan
+        arkaplan -renginin- başlangıç konumunu belirler.
+
+        değerler: padding-box,border-box,content-box,
+        initial, inherit
+
+        padding-box: dolgu kutusu
+
+        border-box:kenarlık kutusu
+
+        content-box: içerik kutusu
+
+        **---**--**---**
+
+        background-blend-mode: html elementine atanmış
+        olan arkaplan resimlerini karıştırma modu
+        özelliklerini belirler.
+         
+        değerler: normal, multiple, screen, overlay, darken
+        lighten, color-dodge, color-burn, hard-light,
+        soft-light, difference, exclusion, hue, saturation, 
+        color, luminosity
+
+        normal: normal
+
+        multiply: çoğaltma
+
+        screen: ekran
+
+        overlay: kaplama
+
+        darken: karartma
+
+        lighten: hafifletme
+
+        color-dodge: renk kaçırma
+
+        color-burn: renk yakma
+
+        hard-light: sert ışık
+
+        soft-light: yumuşak ışık
+
+        difference: fark
+
+        exclusion: hariç tutma
+
+        hue: renk
+
+        saturation: doyma
+
+        color: renk
+
+        luminosity: parlaklık
+
+        **---**--**---**
+
+        background: html elementinin arkaplan özelliğini
+        veya özelliklerini belirler.
+
+        değerler: color/image/repeat/position/size
+        /attachment/origin/clip/initial/inherit
+
+        color:renk
+
+        image:resim url()
+
+        repeat: tekrar et
+
+        position: pozisyon
+
+        size:boyut
+
+        attachment: sayfa hareketine duyarlı davranış
+
+        origin: resmin başlangıç konumu
+
+        clip: rengin başlangıç konumu
+
+        initial: html elementi varsayılan biçimlendirme
+        değerine döner.
+
+        inherit: html elementi üst elementinin
+        biçimlendirme değerini alır.
+
+        body{
+            background: red url('deneme.png') no-repeat border-box scroll center top;
+        }
+
+        linear-gradient():html elementinin doğrusal arkaplan renk geçişi özelliklerini belirler.
+        parametreler: direction(yön)/colors(renkler)
+        değerler: başlangıç noktası & açı - derece / başlangıç rengi - bitiş rengi
+        background:linear-gradient(left,blue,yellow);
+        background:linear-gradient(to bottom right,blue,yellow);
+        background:linear-gradient(45deg,blue,yellow,red);
+        background:linear-gradient(-28deg,blue,yellow,red);
+        background:linear-gradient(top,blue 0%,yellow 100%);
+        background:linear-gradient(top,blue 0%,yellow 40%);
+        prefix leri eklemelisin yoksa gözükmez
+
+        **---**--**---**
+
+        repeating-linear-gradient():html elementinin doğrusal arkaplan renk geçişi tekrarlanma özelliklerini belirler.
+        parametreler: direction(yön)/colors(renkler)
+        değerler: başlangıç noktası & açı - derece / başlangıç rengi - bitiş rengi & dilimleme.
+        background:repeating-linear-gradient(red,yellow);
+        background:repeating-linear-gradient(red 0%,yellow 10%);
+        background: -webkit-repeating-linear-gradient(right, red 0%,yellow 10%);
+        background:-moz-repeating-linear-gradient(right, red 0%,yellow 10%);
+        background:-o-repeating-linear-gradient(right, red 0%,yellow 10%);
+        background:-ms-repeating-linear-gradient(right, red 0%,yellow 10%);
+        background:repeating-linear-gradient(right, red 0%,yellow 10%);
+        prefix leri eklemelisin yoksa gözükmez
+
+        **---**--**---**
+
+        radial-gradient():html elementinin dairesel renk geçişi özelliklerini belirler
+        parametreler: shape(şekil)/size(boyut)/direction(yön)/colors(renkler)
+        değerler:ellipse (elips)& circle (daire)/ farthest-corner (en uzak köşe) & closest-corner(en yakın köşe) &farthest-side (en uzak taraf)&closest-side (en yakın taraf) /
+        başlangıç başlangıç noktası & açı - derece / başlangıç rengi - bitiş rengi
+
+        background:-webkit-radial-gradient(red,yellow,black);
+        background:-moz-radial-gradient(red,yellow,black);
+        background:-o-radial-gradient(red,yellow,black);
+        background:-ms-radial-gradient(red,yellow,black);
+        background:radial-gradient(red,yellow,black);
+
+        varsayılan değer ellipse
+
+        background:radial-gradient(circle,red,yellow,black);
+        background:radial-gradient(circle,red,yellow 20%,black);
+        background:radial-gradient(circle,red,yellow 20%,yellow 60%,black);
+        background:radial-gradient(farthest-corner at 60% 55%,circle,red,yellow,black);
+        background:radial-gradient(closest-corner at 60% 55%,circle,red,yellow,black);
+        background:radial-gradient(farthest-side at 60% 55%,circle,red,yellow,black);
+        background:radial-gradient(closest-side at 60% 55%,circle,red,yellow,black);
+        background:radial-gradient(at 0% 0%,circle,red,yellow,black);
+        background:radial-gradient(100px 200px ellipse at %50,red,yellow,black);
+        background:radial-gradient(circle,white,white 10%,black 10%, black);
+
+        **---**--**---**
+
+        repeating-radial-gradient(): html elementinin dairesel arkaplan renk geçişi tekrarlanma özelliklerini belirler.
+        parametreler: shape(şekil)/size(boyut)/direction(yön)/colors(renkler)
+        değerler: ellipse(elips) & circle (daire)/farthest-corner (en uzak köşe) & closest-corner (en yakın köşe) & farthest-side(en uzak taraf) & closest-side (en yakın taraf) /
+        başlangıç başlangıç noktası & açı - derece / başlangıç rengi - bitiş rengi - dilimle
+
+        background:repeating-radial-gradient(red 0%,yellow 10%);
+        background:repeating-radial-gradient(circle,yellow 10px,blue,red 50px);
+        background:repeating-radial-gradient(circle,yellow 0px, yellow 25px, blue 25px, blue 50px, red 50px, red 100px);
+        background:repeating-radial-gradient(circle at 0% 50%, white 0px, white 10px, black 20px, black 60px);
+        
+        **---**--**---**
+
+        color:metnin rengini belirler.
+        değerler: color/initial/inherit
+        color:renk
+
+        h3{color:red;}
+        p{color:blue;}
+        div{color:green;}
+
+        **---**--**---**
+
+        direction:Metnin veya içeriğin akış yönü özelliklerini belirler.
+        değerler: ltr/ rtl / initial / inherit
+        ltr: soldan sağa
+        rtl: sağdan sola
+        varsayılan değer ltr
+        div{direction:rtl;}
+
+        **---**--**---**
+        
+        unicode-bidi: metnin 'direction' özelliği ile belirtlenmiş akış yönü özelliğini döndürme durumunu belirler.
+        değerler: normal / embed / bidi-overright /initial / inherit
+        normal: normal
+        embed: gömülü
+        bidi-override:geçersiz kılma
+
+        div{
+            direction:rtl;
+            unicode-bidi:bidi-override;
+        }
+        #aaa{
+            unicode-bidi:normal;
+        }
+        #bbb{
+            unicode-bidi:embed;
+        }
+
+        **---**--**---**
+
+        writing-mode: metin,resim,video veya içeriğin hizalama yönü özelliklerini belirler.
+        değerler: horizontal-tb / vertical-lr / vertical-rl /initial /inherit
+        horizontal-tb: yatay sekme.
+        vertical-lr:dikey(sol).
+        vertical-rl:dikey(sağ).
+
+        writing-mode:horizontal-tb / varsayılan değer
+        prefix'li kullanılmalı
+
+        **---**--**---**
+
+        text-orientation: Metnin writing mode özelliği ile belirtilmiş hizalama yönü özelliğinin döndürme durumunu belirler.
+        değerler: mixed | upright | initial | inherit
+        mixed: Karışık.
+        upright: Dik.
+
+        writing-vertical-rl;
+        text-orientation:upright;
+        prefix'li kullanılmalı
+
+        **---**--**---**
+
+        line-height: metin bloğunda bulunan satırların yükseklik değerini belirler.
+        değerler: normal / length / number / % / initial / inherit
+        normal: normal
+        number: rakam değeri
+        length: uzunluk değeri
+        %: yüzde değeri
+
+        line-height:1.4;
+
+        **---**--**---**
+
+        text-indent: metin bloğunda bulunan ilk satırın girintisini belirler.
+        değerler: length | %  | initial | inherit
+
+        text-indent:50px;
+        text-indent:25%;
+
+        **---**--**---**
+
+        letter-spacing: metin içerisinde ki karakterlerin aralarında ki boşluk değerlerini belirler.
+        değerler: normal | length | initial | inherit
+
+        letter-spacing:normal;
+        letter-spacing:1.2rem;
+
+        **---**--**---**
+
+        word-spacing: metnin içerisinde ki kelimeler arasında ki boşluk değerini belirler.
+        değerler: normal | length | initial | inherit
+
+        word-spacing:normal;
+        word-spacing:22px;
+
+        **---**--**---**
+         
+        white-space: html elementi içerisinde bulunan metin boşluk değerleri için davranış özelliklerini belirler.
+        değerler: normal | nowrap | pre | pre-line | pre-wrap | initial | inherit
+
+        normal: satır boşluk dizeleri ile birlikte metin içi boşluk dizeleri de tek boşluk olur. ---varsayılan değer.
+        nowrap: satır boşluk dizeleri ile birlikte metin içi boşluk dizeleri de tek boşluk olur ve satır sonları hiçbir zaman alt satıra geçmez.
+        pre: satır boşluk dizeleri ile birlikte metin içi boşluk dizeleri de korunur ve satır sonları hiçbir zaman alt satıra geçmez.
+        pre-line: satır boşluk dizeleri korunur ve metin içi boşluk dizeleri tek boşluk olur.
+        pre-wrap:satır boşluk dizeleri ile birlikte metin içi boşluk dizeleri de korunur.
+
+        white-space:normal;
+        white-space:nowrap;
+        white-space:pre;
+        white-space:pre-line;
+        white-space:pre-wrap;
+
+        **---**--**---**
+
+        tab-size : html elementi içerisinde bulunan metnin içerdiği sekme karakterinin genişliğini belirler.
+        değerler: number | length | initial  | inherit
+        number: sayı (X karakter.)
+        legth: uzunluk değeri
+        tab-size:30 ~~ 100px;
+        "use with pre-fix"
+        <pre> tag'ın da daha çok kullanılır bu biçimlendirme.
+
+        **---**--**---**
+        
+        text-transform: metnin büyük harf / küçük harf dönüştürme özelliklerini belirler.
+        değerler: none | capitalize | uppercase | lowercase | initial | inherit
+        none: yok
+        capitalize: ilk harf büyük
+        uppercase: bütün harfler büyük
+        lowercase: bütün harfler küçük
+
+        **---**--**---**
+
+        text-decoration: metne eklenecek olan dekorasyon / süsleme özelliklerini belirler.
+        parametreler: decoration (dekorasyon / süsleme) | style (stil) | color (renk)
+        değerler: none & underline & overline & line-through & initial & inherit | solid & dashed & dotted & double & wavy | color
+        none: değer yok . varsayılan değer.
+        underline: metnin alt tarafına çizgi ekler.
+        overline: metnin üst tarafına çizgi ekler.
+        line-through: metnin üzerine çizgi ekler
+        initial: !! varsayılan haline döndürür ama bir üst elementte text-decoration özelliği var ise varsayılan haline dönemiyor.
+        inherit
+        solid: düz çizgi
+        dashed: kesikli çizgi
+        dotted: noktalı çizgi
+        double: çift çizgi
+        wavy: dalgalı çizgi (frekans)
+        color: renk
+        div{text-decoration: underline overline dashed;}
+
+        **---**--**---**
+
+        text-decoration-line:   Metne eklenecek olan dekorasyon  / süsleme çizgisi türünü belirler.
+        değerler: none | underline | overline | line-through | initial | inherit
+        div{text-decoration-line: underline overline;}
+
+        **---**--**---**
+
+        text-decoration-style: metne eklenecek olan dekorasyon  / süsleme çizgisinin stilini belirler.
+        değerler: solid | dashed | dotted | double | wavy |
+        div{text-decoration-style:dashed;}
+
+        **---**--**---**
+
+        text-decoration-style: metne eklenecek olan dekorasyon  / süsleme çizgisinin rengini belirler.    
+        değerler: color | initial | inherit
+        div{text-decoration-color:red;} rgb & rgba & hsl & hsla
+
+        **---**--**---**
+
+        text-stroke: metne eklenecek olan dış çizgisi özelliklerini belirler.
+        parametreler: length | color
+        değerler: length & initial & inherit | color
+        length: css'in tüm ölçüm birimleri kullanılabilir.
+        color: css'in tüm renk birimleri kullanılabilir.
+        div{text-stroke:1px;}
+        div{text-stroke:1px red;}
+
+        **---**--**---**
+
+        text-stroke-width: metne eklenecek olan dış çizgisi genişliğini belirler.
+        değerler: length | initial | inherit 
+        div{text-stroke-width:4px;}
+        
+        **---**--**---**
+
+        text-stroke-color: metne eklenecek olan dış çizgisi rengini belirler.
+        değerler: color | initial | inherit
+        div{text-stroke-color:green;}
+
+        **---**--**---**
+
+        text-shadow: metnin gölgelendirme özelliklerini belirler.
+        parametreler: horizontal shadow (yatay gölge) | vertical shadow (dikey gölge) | blur radius (bulanıklık yarıçapı) | color
+        değerler: none & length & initial & inherit | blur-radius | color
+        blur-radius: bulanıklık yarıçapı
+        div{text-shadow:0px 0px 5px red;}
+        div{text-shadow:-2px -2px 0px rgba(204,204,204,0.5);}
+        div{text-shadow:0px 0px 4px red;, 0px -5px 4px orange, 2px -10px 6px yellow;}
+
+        **---**--**---**
+
+        text-overflow: html elementinin boyutlandırılmış alanına sığmayacak akdar büyük metnin taşma özelliklerini belirler.
+        değerler: clip | ellipsis | initial | inherit
+        clip: metni kırpıyor
+        ellipsis: metni kırpar ve '...' ekler.
+        
+        **---**--**---**
+        
+        word-wrap: html elementinin boyutlandırılmış alanına sığmayacak kadar büyük kelimenin ya da kelimelerin satır kırılma özelliklerini belirler.
+        değerler: normal | break-word | initial | inherit
+        break-word: kelimeyi kırar. hecesine dikkat etmeden
+
+        **---**--**---**
+        
+        word-break: html elementinin boyutlandırılmış alanının sonuna sığmayacak kadar büyük kelimeleri satır kırılma özelliklerini belirler.
+        değerler: normal | break-all | keep-all | initial | inherit
+        break-all : kelimeyi harflerden kırar.
+        keep-all : kelimeyi boşluklardan kırar.
+
+        **---**--**---**
+
+        content : before veya after sahte elementi ile birlikte üretilecek olan içeriği metne eklemek için kullanılır.
+        değerler : normal | none | string | open-quote | close-quote | no-open-quote | no-close-quote | url | attr | counter | initial
+        string: içeriğe yeni bir dize ekler
+        open-quote : içeriğe açılış tırnak işaretini ekler.
+        close-quote : içerğe kapanış tırnak işaretini ekler.
+        no-open-quote : içeriğin açılış tırnak işaretini kaldırır.
+        no-close-quote : içerğin kapanış tırnak işaretini kaldırır.
+        url : içeriğe medya dosyası ekler.
+        attr : içeriğin bulunduğu elementin belirtilecek olan herhangi bir özelliğine erişerek değerini ekler.
+        counter(fonksiyon) : belirtilecek olan herhangi bir elementin sayaç bilgisine erişerek değerini ekler.
+        p{counter-increment:EğitimSetleriSayaci;}
+        p::before{content:counter(EğitimSetleriSayaci)". ";}
+
+        **---**--**---**
+
+        attr() fonksiyonu : html elementinin belirtilecek olan herhangi bir özellik bilgisine erişmek için kullanılır.
+
+        div{content:"( ID Değeri : " attr(id) ")"}
+        div{content:"( ID Değeri : " attr(contenteditable) ")"}
+        
+        **---**--**---**
+
+        quotes : HTML'in <q> tag'ı (etiketi) için tırnak işareti türü değerini belirler.
+        değerler: none | string | initial | inherit
+        string: harf - rakam - simge vs.
+
+        q{quotes:"X" "X";}
+        ilk 'x' baştaki, ikinci 'x' sondaki
+        q{quotes:"x" "X" "q" "Q";}
+        ilk 'x' baştaki, ikinci 'x' sondaki; ilk q içeride ki ilk quote açılışı, ikinci q içeri deki ilk quote nin kapanışı.
+        q{quotes:"\05D0" "\05D0";}
+        'özel simgeler'
+
+        **---**--**---**
+        font-size: metnin yazı tipi boyutunu belirler.
+        değerler: length | % | xx-small | x-small | small | medium | large | x-large | xx-large | smaller | larger | initial | inheri
+        
+        font-size:10px;
+        font-size:25%;
+        font-size:xx-small / x-small / small / medium / large / x-large / xx-large / smaller / larger
+
+        **---**--**---**
+
+        font-family: metnin yazı tipi ailesini belirler.
+        değerler: family-name | initial | inherit 
+        family-name: yazı tipi ailesinin adı
+
+        font ailelerinin türleri : family-name | generic-name
+        generic-name : genel bir yazı tipi ailesi
+        değerler: serif | sans-serif | cursive | fantasy | monospace
+        serif: tırnaklı
+        sans-serif: tırnaksız
+        cursive: el yazısı
+        fantasy:  fantazi
+        monospace: tek aralıklı
+        font-family: "Times New Roman", "serif";
+        font-family: Arial, "sans-serif";
+
+        **---**--**---**
+
+        font-style: metnin yazı tipi stilini belirler.
+        değerler: normal | italic | oblique | initial | inherit
+        italic: italik
+        oblique: eğik -- italik stili olmayan font'lar için
+
+        **---**--**---**
+
+        font-weight: metnin yazı tipi kalınlığını belirler.
+        değerler: normal | bold | bolder | lighter | number | initial | inherit
+        bold    : kalın
+        bolder  : cesur
+        lighter : açık
+        number  : sayı (100-200-300-400-500-600-700-800-900)  
+
+        **---**--**---**
+        
+        font-wariant: metnin küçük harf içerikleri için büyük harf gösterilme özelliklerini belirler.
+        değerler : normal | small-caps | initial | inherit
+        small-caps : küçük harfli metinler, küçük harf boyutu korunarak büyük harf olarak dönüştürülür.
+        div {font-wariant:small-caps;}
+
+        **---**--**---**
+
+        font-wariant-caps: metnin küçük harf içerikleri için büyük harf alternatif gösterilme özelliklerini belirler.
+        değerler : normal | small-caps | all-small-caps | petite-caps | all-petite-caps | unicase |initial | inherit
+        small-caps : küçük harfli metinler, küçük harf boyutu korunarak büyük harf olarak dönüştürülür.
+        all-small-caps : tüm metinler , küçük harf boyutu korunarak büyük harf olarak dönüştürülür. 
+        petite-caps : küçük harfli metinler, küçük harf boyutu korunarak büyük harf olarak dönüştürülür. (yazı tipi ailesi küçük harf büyüklüğünü desteklemiyorsa, small-caps gibi davranır.)
+        all-petite-caps : tüm metinler , küçük harf boyutu korunarak büyük harf olarak dönüştürülür. (yazı tipi ailesi küçük harf büyüklüğünü desteklemiyor, all-small-caps gibi davranır.)
+        unicase : büyük harfli metinler, küçük harf boyutu korunarak büyük harf olarak dönüştürülür.
+
+        **---**--**---**
+        
+        font: metnin tüm yazı tipi özelliklerini belirler. 
+        değerler : font-style | font-wariant | font-weight | font-size/line-height | font-family | initial | inherit
+        font-style : metnin yazı tipi stili
+        font-wariant : metnin küçük harf içerikleri için büyük harf gösterilme özelliği
+        font-weight : metnin yazı tipi kalınlığı
+        font-size : metnin yazı tipi boyutu
+        line-height : metin bloğunda bulunan satırların yüksekliği
+        font-family : metnin yazı tipi ailesi
+        
+        !!!mecburen font boyutunu ve font ailesini göstermek zorundasın yoksa çalışmaz!!!
+        p{font:30px "Monotype Corsiva", "cursive"}
+        p{font:italic small-caps bold 30px/50px "Arial", "sans-serif"}
+
+        **---**--**---**
+
+        @font-face : metinler için sistemde yüklü olmayan font'ların kullanılabilme durumlarını belirler.
+        değerler : font-family | src | local | font-style | font-weight
+        font-family : metnin yazı tipi ailesi
+        local : yerel
+        src : dosya adresi
+        font-style : metnin yazı tipi stili
+        font-weight : metnin yazı tipi kalınlığı
+
+        font dosya türleri : EOT | WOFF2 | WOFF | TTF & OTF | SVG
+        EOT : Internet Explorer ve Microsoft Edge
+        WOFF2 : Chrome - Firefox - Opera
+        WOFF : Tüm tarayıcılar
+        TTF & OTF : Tüm tarayıcılar 
+        SVG : Chrome - Safari - Opera
+
+        **---**--**---**
+
+        Google Font
+        @import()
+
+        **---**--**---**
+
+        list-style-type : listedeki madde işaretçisinin türünü belirler.
+        değerler    : disc | circle | square | decimal | decimal-leanding-zero | lower-alpha | upper-alpha | lower-roman | upper-roman | none | initial | inherit
+
+        **---**--**---**
+
+        list-style-position : listedeki madde işaretçisinin içerik akışındaki konum özelliklerini belirler.
+        değerler : outside | inside | initial | inherit
+
+        **---**--**---**
+
+        list-style-image : listedeki madde işaretçisinin resim özelliklerini belirler.
+        değerler : none | url | initial | inherit
+        
+        **---**--**---**
+
+        list-style : listedeki madde işaretçisinin tüm özelliklerini belirler.
+        parametreler : list-style-type | list-style-position | list-style-image | initial | inherit
+        
+        **---**--**---**
+
+        counter-reset : bir yada daha fazla sayaç oluşturmak veya sıfırlamak için kullanılır.
+        counter-increment :  bir yada daha fazla sayacın değerini arttırmak için kullanılır.
+        counter()   : oluşturulmuş olan sayacın değerini html elementine eklemek için kullanılır.
+        counter() parametreleri     : counter name (sayaç adı) | style-type
+        style-type değerleri : decimal | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman
+        div{
+            counter-reset:Sayac;
+            list-style-type:none;
+        }
+        p::before{
+            counter-increment:Sayac;
+            content:counter();
+        }
+
+        **---**--**---**
+
+        counters()
+
+        ul{
+            counter-reset:Sayac;
+            list-style-type:none;
+        }
+        li::before{
+            counter-increment:Sayac;
+            content:counters(Sayac, " : "); veya content:counters(Sayac, " . ")" : ";
+        }
+
+        content:counters(Sayac, " . ", lower-roman)" : ";
+
+        **---**--**---**
+
+        overflow / overflow-x / overflow-y  : html elementinin boyutlandırılmış alanına sığmayacak kadar büyük olan içeriğin taşma özelliklerini belirler.
+        değerler : visible | hidden | scroll | auto | initial | inherit 
+
+        **---**--**---**
+
+        overflow-wrap : html elementinin boyutlandırılmış alanına sığmayacak kadar büyük metnin satır kırılma özelliklerini belirler.
+        değerler : normal | break-word | initial | inherit
+        break-word : kelime kır.
+
+        **---**--**---**
+
+        border-collapse: html table (tablo) elementinin kenarlık / çerçeve birleştirme durumunu belirler.
+        değerler : separate | collapse | initial | inherit 
+        separate : ayrı kenarlık / çerçeve
+        collapse : bitiriş kenarlık / çerçeve
+
+        table, th, td ,tr { border-collapse:collapse;}
+
+        **---**--**---**
+
+        border-spacing : html'in <table> (tablo) elementinde bulunan bitişik hücrelerin arasındaki mesafeyi belirler.
+        değerler: length | initial | inherit
+
+        table{ border: 2px solid red;
+        border spacing: 15px;}
+
+        **---**--**---**
+
+        empty-cells: html'in <table> (tablo) elementinde bulunan ve içeriği boş hücrelerin görüntülenme özelliklerini belirler.
+        değerler : show | hide | initial | inherit 
+
+        **---**--**---**
+
+        table-layout: html'in <table> (tablo) elementinde bulunan sütunların genişlikleri için düzen algoritması özelliğini belirler.
+        değerler : auto | fixed | initial 
+
+        **---**--**---**
+
+        caption-side : html'in <table> (tablo) elementinde bulunan başlık elementinin konum özelliklerini belirler.
+        değerler: top | bottom | initial | inherit
+        top: üstte
+        bottom : altta
+
+        **---**--**---**
+        
+        float : html elementinin bulunduğu konumdan kayma özelliklerini belirler.
+        değerler : none | left | right | initial | inherit
+
+        **---**--**---**
+
+        clear : html elementine atanmış olan kayma özelliğinin temizlenme durumunu belirler.
+        değerler : none | left | right | both | initial
+
+        **---**--**---**
+        
+        display: html elementinin görüntüleme özelliklerini belirler.
+        değerler:   inline | block | inline-block | none | run-in | list-item | table | table-row | table-cell | table-caption | table-row-group | table-header-group | table-footer-group
+                    table-column | table-column-group | inline-table | flex | inline-flex | grid | inline-grid | initial
+
+        inline              : HTML elementi satır düzeyli element olarak kabul edilir ve görüntülenir. (varsayılan değer) (Elemente içerik alanından fazla genişlik veya yükseklik atanmasına izin verilmez.)
+        block               : HTML elementi blok düzeyli element olarak kabul edilir ve görüntülenir.
+        inline-block        : HTML elementi hem satır düzeyli hem de blok düzeyli element olarak kabul edilir ve görüntülenir. (Elemente içerik alanından fazla genişlik veya yükseklik atanmasına izin verir.)
+        none                : Değer yok. (HTML elementi görüntülenmez.)
+        run-in              : HTML elementi ya satır düzeyli ya da blok düzeyli element olarak kabul edilir ve görüntülenir.       
+        list-item           : HTML elementi liste elementi <li> olarak kabul ediliyor ve görüntüleniyor.
+        table               : HTML elementi tablo elementi <table> olarak kabul edilir ve görüntülenir.
+        table-row           : HTML elementi tablo satır elementi <tr> olarak kabul edilir ve görüntülenir.
+        table-cell          : HTML elementi tablo sütun elementi <td> olarak kabul edilir ve görüntülenir.
+        table-caption       : HTML elementi tablo kısa başlık elementi <caption> olarak kabul edilir ve görüntülenir.
+        table-row-group     : HTML elementi tablo gövde elementi <tbody> olarak kabul edilir ve görüntülenir.
+        table-header-group  : HTML elementi tablo içi başlık elementi <thead> olarak kabul edilir ve görüntülenir.
+        table-footer-group  : HTML elementi tablo içi altlık elementi <tfoot> olarak kabul edilir ve görüntülenir.
+        table-column        : HTML elementi tablo içi sütun ortak özellikleri belirleme elementi <col> olarak kabul edilir ve görüntülenir.
+        table-column-group  : HTML elementi tablo içi sütun ortak özellikleri belirleme grubu elementi <colgroup> olarak kabul edilir ve görüntülenir.
+        inline-table        : HTML elementi satır düzeyli tablo element <table> olarak kabul edilir ve görüntülenir.
+        flex                : HTML elementi blok düzeyli esnek element olarak kabul edilir ve görüntülenir.
+        inline-flex         : HTML elementi satır düzeyli esnek element olarak kabul edilir ve görüntülenir.
+        grid                : HTML elementi blok düzeyli ızgara element olarak kabul edilir ve görüntülenir.
+        inline-grid         : HTML elementi satır düzeyli ızgara element olarak kabul edilir ve görüntülenir.
+        
+        blok düzeyli elementler : div | p |
+        satır düzeyli elementler : span | i |
+        
+        **---**--**---**
+
+        visibility: html elementinin görüntülenme ve gizlenme özelliklerini belirler.
+        değerler : visible | hidden | collapse | initial | inherit 
+        visible : görünür
+        hidden : gizli | element gizlenir ama kapladığı alan korunur -- korunmayacaksa display:none;
+        collapse : bitişik | element gizlenir ama kapladığı bir alan varsa margin,padding,border,width,height saklanır 
+        
+        **---**--**---**
+
+        position : HTML elementinin konumlandırma özelliklerini belirler.
+        değerler : static | relative | absolute | fixed | sticky | initial inherit
+        static  : Durağan.
+        relative : Göreceli.
+        absolute : Mutlak/ Kesin.
+        fixed : Sabit.
+        Sticky : Yapışkan.
+        
+        top : Konumlandırılmış bir HTML elementinin, üstten hizalama konumunu belirler.
+        right : Konumlandırılmış bir HTML elementinin, sağdan hizalama konumunu belirler.
+        bottom : Konumlandırılmış bir HTML elementinin, alttan hizalama konumunu belirler.
+        left : Konumlandırılmış bir HTML elementinin, soldan hizalama konumunu belirler.
+        değerler : auto | length | initial
+        */
+    </style>
+</head>
+<body>
+</body>
+</html>
