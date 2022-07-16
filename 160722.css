@@ -1,0 +1,917 @@
+/*
+    z-index : konumlandırılmış bir html elementinin katman / yığın sırasını belirler.
+    Değerler : auto | number | initial 
+
+    z-index: 1-99999;
+
+    **---**--**---**
+
+    box-sizing : html elementinin genişlik ve yükseklik değerlerinin ne şekilde hesaplanması gerektiğini belirler.
+    Değerler : content-box | border-box | initial | inherit
+    content-box : içerik kutusu
+    border-box  : kenarlık kutusu
+
+    div{
+        width:500px;
+        height:150px;
+        border:10px;
+        padding:50px;
+    }
+    !!!bu hesaplama da margin dahil değildir!!!
+    !!!prefixli yazılmalıdır!!!
+
+    'content-box'
+    sol kenarlık genişliği + sol dolgu genişliği + içerik genişliği + sağ dolgu genişliği + sağ kenarlık genişliği = 620px
+    üst kenarlık yüksekliği + üst dolgu yüksekliği + içerik yüksekliği + alt dolgu yüksekliği + alt kenarlık yüksekliği = 420px
+    
+    'border-box'
+    içerik genişliği = 500px
+    içerik yüksekliği = 300 px;
+
+    **---**--**---**
+
+    box-decoration-break: html elementinin kenarlık / çerçeve özelliklerinin, kutu parçalandığındaki satır veya sayfa sonları için davranış özelliklerini belirler.
+    Değerler : slice | clone | initial
+    slice : Dilimle
+    clone : klonla
+
+    clone ile inline html etiketleri veya inline'a çevrilmiş etiketlerin çevrelerinin tamamlanmasını sağlar.
+    
+    box-decoration-break:clone;
+    !!!prefixli yazılmalıdır!!!
+
+    **---**--**---**
+
+    box-shadow  : HTML elementinin gölgelendirme özelliklerini belirler.
+    Parametreler : horizontal shadow (yatay gölge) | vertical shadow (dikey gölge) | blur spread (bulanıklık yayma) | spread radius (yayma yarıçapı) | color (renk)
+    Değerler : none | length | inset | initial
+    inset       : İlave (İçerisinde)
+
+    box-shadow:5px 5px 15px 2px grey;
+    box-shadow:5px 5px 15px grey inset;
+
+    box-shadow:5px 5px grey, 10px 10px yellow, 15px 15px red, 20px 20px blue;
+    !!!prefixli yazılmalıdır!!!
+
+    **---**--**---**
+    
+    resize : HTML elementinin kullanıcı tarafından yeniden boyutlandırılabilir olup olmadığı durumunu belirler.
+    Değerler : none | both | horizontal | vertical | initial | inherit(bazı elementler de kullanılamıyor)
+    
+    none    : Değer yok.
+    both    : Her ikisi de.
+    horizontal  : Yatay.
+    vertical    : Dikey.
+    initial     : HTML elementi varsayılan biçimlendirme değerine döner.
+    inherit     : HTML elementi üst elementinin biçimlendirme değerini alır. 
+    
+    div{
+        width:200px;
+        height:auto;
+        border:2px solid red;
+        overflow:auto; // "overflow" değerini 'auto' vermeliyiz "resize" özelliğini kullanabilmek için
+        resize:none;
+    }
+
+    **---**--**---**
+
+    opacity : HTML elementinin opaklık/şeffaflık özelliklerini belirler.
+    Değerler: number | initial
+
+    number  : Rakam değeri (0.0 ila 1.0 arasında) (0.0 en şeffaf değer.)(1.0 şeffaflık yok.)
+    
+    !!!--prefixli yazılmalıdır (Prefixleri çok farklı)--!!!
+
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+    filter:Alpha(opacity=100);
+    opacity:1.0;
+
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+    filter:Alpha(opacity=0.8);
+    opacity:0.8;
+
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+    filter:Alpha(opacity=1.0);
+    opacity:initial;
+
+    **---**--**---**
+
+    filter : HTML elementine uygulanacak olan efekt özelliklerini belirler.
+    Değerler : none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia()
+    
+    blur()          : Bulanıklık (0% ila 100% arası)
+    brightness()    : Parlaklık (0% ila 100% arası)
+    contrast()      : Kontrast (0% ila 100% arası)
+    drop-shadow()   : Gölge Düşürme. (horizontal-shadow(yatay gölge) | vertical shadow (dikey gölge) | blur spread (bulanıklık yayma) | color)
+    grayscale()     : Gri Tonlama (0% ila 100% arası)
+    hue-rotate()    : Renk Döndürme (0 derece ila 360 derece arası)
+    invert()        : Ters Çevirme (0% ila 100% arası)
+    opacity()       : Opaklık Değeri (0% ila 100% arası)
+    saturate()      : Doyma (0% ila 100% arası)
+    sepia()         : Sepya (Kahverengi ağırlıklı antik tonlama) (0% ila 100% arası)
+
+    !!!--prefixli yazılmalıdır--!!!
+    
+    filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia();
+    
+    **---**--**---**
+
+    clip : absolute(mutlak/kesin) değeri ile konumlandırılmış bir HTML elementinin kırpma/maskeleme özelliklerini belirler.
+    Değerler : auto | shape | initial
+
+    shape : Şekil. rect() fonksiyonunu kullanır. (Rectangle : Dikdörtgen)
+
+    div{
+        position:absolute;
+        width:200px;
+        height:200px;
+        border:1px solid blue;
+        background-color:yellow;
+        clip:rect(50px, 100px, 100px, 50px); |1.Parametre:Üst|2.Parametre:Sağ|3.Parametre:Alt|4.Parametre:Sol|
+    }
+    clip:rect(50px, 150px, 100px, 50px); yukarıdan 50 den başlayıp aşağı 100'e kadar iniyor / soldan 50 den başlayıp sağa 150'ye kadar gidiyor.
+    
+    **---**--**---**
+
+    clip-path : absolute (mutlak/kesin) değeri ile konumlandırılmış bir HTML elementinin gelişmiş kırpma/maskeleme özelliklerini belirler.
+    Değerler : auto | shape | initial
+    
+    shape : şekil
+    Shape Değerleri : inset | circle | ellipse | polygon
+
+    inset : İlave.
+    circle : Daire
+    ellipse : Elips.
+    polygon : Poligon.
+
+    div{
+        position:absolute;
+        width:500px;
+        height:500px;
+        background-color:yellow;
+        clip-path:inset(0px 50px 100px 200px); |1.Parametre:Üst|2.Parametre:Sağ|3.Parametre:Alt|4.Parametre:Sol|
+        üstten alta 0 px sağdan sola 50px alttan üstte 100px soldan sağa 200px , hepsi içeri doğru --inset
+    }
+
+    position:absolute;
+    clip-path:circle(50% at 50% 50%); ŞeklinYarıçapı at Yatay Dikey
+
+    position:absolute;
+    clip-path:ellipse(50% 25% at 50% 50%); ŞeklinYatayYarıçapı ŞeklinDikeyYarıÇapı at Yatay Dikey
+
+    position:absolute;
+    clip-path:polygon(50% 0%, 0% 100%, 100% 100%); (Path(yol) / Doldurma Kuralı) (Yatay pozisyon | Dikey pozisyon) -- 0% 0% = sol üst köşe // 100% 100% = sağ alt köşe
+    clip-path:polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); // Paralel Kenar
+    clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); // Kare -- Baklava
+    clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); // Pentagon -- Beşgen
+    clip-path:polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%,30% 100%, 0% 70%, 0% 30%); // Sekizgen
+    clip-path:polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%,20% 100%, 0% 80%, 0% 20%); // Sekizgen
+    
+    **---**--**---**
+
+    object-fit  :  HTML elementinin boyutlandırılmış alanına sığmayacak kadar büyük resim veya video içeriklerinin yeniden nasıl boyutlandırılacağını belirler.
+    Değerler    : fill | cover | contain | none | scale-down | initial
+    
+    fill        : Doldurma (Genişlik ve yükseklik değerlerine bakılmaksızın, resim veya video, elementin içerisine sığacak şekilde daraltılır veya uzatılır.)
+    cover       : Kapak (Genişlik ve yükseklik değerleri korunarak, resim veya video, elementin içerisine sığacak halde kırpılır. Fakat resim veya video genişlik ya da yükseklik değeri, elementin genişlik ya da 
+                yükseklik değerinden az ise uzatılır.)
+    contain     : İçerme (Genişlik ve yükseklik değerleri korunarak, resim veya video, elementin içerisine sığacak halde orantılı bir şekilde yeniden boyutlandırılır.)
+    none        : Değer yok. (Genişlik ve yükseklik değerleri korunarak, resim veya video, elementin içerisine sığdırılmaya çalışılmaz. Fakat elementin içerisine sığmayan/taşan kısım kırpılır.)
+    scale-down  : Azaltma (Resim veya video nesnesinin en uygun boyutlandırmasını bulmak için "contain" ve "none" değerlerini karşılaştırarak en uygun olanını otomatik olarak uygular.)
+
+    object-fit : contain; *-* Orantılı *-*
+
+    **---**--**---**
+
+    object-position : HTML elementinin boyutlandırılmış alanına sığmayacak kadar büyük resim veya video içeriklerinin, object-fit özelliği kullanılarak yeniden boyutlandırılma sonrasında ki resmin veya videonun
+                    konum özelliklerini belirler.
+    Parametreler    : horizontal value (Yatay Değer) | vertical value (Dikey Değer)
+    Değerler        : length | % | center | top | right | bottom | left | initial
+
+    length          : Uzunluk       img{object-position:50px 100px;}
+    %               : Yüzde         img{object-position:25% 25%;}
+    center          : Orta          img{object-position:center;}
+    top             : Üst           img{object-position:top;}
+    right           : Sağ           img{object-position:right;}
+    bottom          : Alt           img{object-position:bottom;}
+    left            : Sol           img{object-position:left;}
+
+    **---**--**---**
+
+    column-count    : HTML elementinin çok sütunlu düzeni için bölünmesi gereken sütun sayısı özelliğini belirler.
+    Değerler        : number | auto | initial | inherit
+    
+    number          : Sayı değeri(Varsayılan değer 1)
+
+    !!!--prefixli yazılmalıdır--!!! **Responsive**
+    p{column-count:3;}
+
+    **---**--**---**
+
+    column-width    : HTML elementinin çok sütunlu düzeni için bölünmesi gereken sütunların genişliğini belirler.
+    Değerler        : auto | length | initial | inherit
+
+    !!!--prefixli yazılmalıdır--!!! **Responsive**
+    div{column-width:500px;} 
+
+    **---**--**---**
+
+    columns         :   HTML elementinin çok sütunlu düzeni için bölünmesi gereken sütunların minimum genişlik ve maksimum sütun sayısı özelliklerini belirler.
+    Parametreler    :   column-width | column-count
+    Değerler        :   auto | column-width | column-count | initial | inherit
+
+    !!!--prefixli yazılmalıdır--!!! **Responsive**
+    p{columns:300px 4;} // Kolonlar 300px'in altına düşemez ve maksimum sütun sayısı 4
+    
+    **---**--**---**
+
+    column-fill : HTML elementinin çok sütunlu düzeni için bölünen sütunların nasıl doldurulacağı durumunu belirler.
+    Değerler    : balance | auto | initial | inherit
+    
+    div{
+        --column-count prefix'ler--
+        column-count:3;
+        --column-fill prefix'ler-- // web-kit & moz & o & ms
+        column-fill:balance; // genişliğe eşit
+    }
+    column-fill:auto; // yükseklik dolana kadar
+    
+    **---**--**---**
+
+    column-span : HTML elementinin çok sütunlu düzeni için bölünen sütunların içerisinde ki bir elementin sütun veya sütunlara yayılması durumunu belirler.
+    Değerler    : none | all | initial | inherit
+
+    div{
+        --column-count prefix'ler-- // web-kit & moz & o & ms
+        column-count:3;
+    }
+    h1{
+        --column-fill prefix'ler-- // web-kit & moz & o & ms
+        column-fill:none; // varsayılan değer. Bölünmeyi dikkate alıyor.
+    }
+    column-fill:all; // Sütunlara yayılıyor. Bölünmeyi dikkate almıyor.
+    
+    **---**--**---**
+
+    column-gap  :  HTML elementinin çok sütunlu düzeni için bölünen sütunların aralarındaki boşluk değerlerini belirler.
+    Değerler    : normal | length | initial | inherit
+    
+    div{
+        --column-count prefix'ler-- // web-kit & moz & o & ms
+        column-count:3;
+        --column-gap prefix'ler-- // web-kit & moz & o & ms
+        column-gap:5px; // genişliğe eşit
+    }
+
+    **---**--**---**
+
+    column-rule-style   : HTML elementinin çok sütunlu düzeni için bölünen sütunların aralarındaki dikey ayraç stilini belirler.
+    Değerler            : none | hidden | solid |dashed | dotted | double | groove | ridge | inset | outset | initial | inherit 
+    
+    div{
+
+        --column-count prefix'ler-- // web-kit & moz & o & ms
+        column-count:3;
+
+        --column-gap prefix'ler-- // web-kit & moz & o & ms
+        column-gap:5px; // genişliğe eşit
+
+        --column-rule-style prefix'ler-- // web-kit & moz & o & ms
+        column-rule-style:none | hidden | solid |dashed | dotted | double | groove | ridge | inset | outset;
+    }
+
+    **---**--**---**
+
+    column-rule-width   : HTML elementinin çok sütunlu düzeni için bölünen sütunların aralarındaki dikey ayraç genişliğini belirler.
+    Değerler            : length | thin | medium | thick | initial | inherit 
+    
+    div{
+
+        --columns prefix'ler-- // web-kit & moz & o & ms
+        columns:3;
+
+        --column-gap prefix'ler-- // web-kit & moz & o & ms
+        column-gap:5px; // genişliğe eşit
+
+        --column-rule-style prefix'ler-- // web-kit & moz & o & ms
+        column-rule-style:none | hidden | solid |dashed | dotted | double | groove | ridge | inset | outset;
+
+        --column-rule-width prefix'ler-- // web-kit & moz & o & ms
+        column-rule-width:length | thin | medium | thick;
+    }
+
+    **---**--**---**
+
+    column-rule-color   : HTML elementinin çok sütunlu düzeni için bölünen sütunların aralarındaki dikey ayraç rengini belirler.
+    Değerler            : color | initial | inherit 
+    
+    div{
+
+        --columns prefix'ler-- // web-kit & moz & o & ms
+        columns:3;
+
+        --column-gap prefix'ler-- // web-kit & moz & o & ms
+        column-gap:5px; // genişliğe eşit
+
+        --column-rule-style prefix'ler-- // web-kit & moz & o & ms
+        column-rule-style:none | hidden | solid |dashed | dotted | double | groove | ridge | inset | outset;
+
+        --column-rule-width prefix'ler-- // web-kit & moz & o & ms
+        column-rule-width:length | thin | medium | thick;
+
+        --column-rule-color prefix'ler-- // web-kit & moz & o & ms
+        column-rule-width:color;
+    }
+
+    **---**--**---**
+
+    column-rule     : HTML elementinin çok sütunlu düzeni için bölünen sütunların aralarındaki dikey ayraç özelliklerini belirler.
+    Parametreler    : column-rule-width | column-rule-style | column-rule-color
+    Değerler        : rule value | initial | inherit
+
+    rule value      : Kural Değeri
+    
+    div{
+
+        --columns prefix'ler-- // web-kit & moz & o & ms
+        columns:5px 3;
+
+        --column-rule prefix'ler-- // web-kit & moz & o & ms
+        column-rule:10px dashed red; // sadece genişlik verilirse gözükmez.
+    }
+
+    **---**--**---**
+
+    break-before    : HTML elementinin çok sütunlu düzeni için bölünen sütunların arasındaki belirtilecek olan elementin öncesinde bölünme davranışı özelliklerini belirler.
+    Değerler        : auto | column | initial
+
+    column          : Sütun bölünür.
+
+    div{
+
+        --columns prefix'ler-- // web-kit & moz & o & ms
+        columns:2;
+    }
+    h1#Deneme{
+        break-before:column; // sütunu deneme id'li yerin başından ayırıyor.
+    }
+
+    **---**--**---**
+
+    break-after     : HTML elementinin çok sütunlu düzeni için bölünen sütunların arasındaki belirtilecek olan elementin sonrasında bölünme davranışı özelliklerini belirler.
+    Değerler        : auto | column | initial
+
+    column          : Sütun bölünür.
+
+    div{
+
+        --columns prefix'ler-- // web-kit & moz & o & ms
+        columns:2;
+    }
+    p#Ornek{
+        break-after:column; // sütunu ornek id'li yerden sonra ayırıyor.
+    }
+
+    **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---**
+
+    prefix'ler-- // web-kit & moz & o & ms
+    display:flex;
+    display:inline-flex; 
+
+    **---**--**---**
+
+    flex-direction  : Esnek kutuların dizilim yönü özelliklerini belirler.
+    Değerler        : row | row-reverse | column | column-reverse | initial
+
+    row             : Satır (varsayılan değer)
+    row-reverse     : Ters Satır
+    column          : Sütun
+    column-reverse  : Ters Sütun
+
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-direction:row | row-reverse | column | column-reverse;
+    }
+
+    **---**--**---**
+
+    flex-wrap       : Esnek kutuların satır kırılma özelliklerini belirler.
+    Değerler        : nowrap | wrap | wrap-reverse | initial
+
+    nowrap          : Kırılma yok (varsayılan değer)
+    wrap            : Kırılma
+    wrap-reverse    : Ters Kırılma
+
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-wrap:nowrap | wrap | wrap-reverse;
+    }
+
+    **---**--**---**
+
+    flex-flow       : Esnek kutuların dizilim yönü ve satır kırılma özelliklerini belirler.
+    Parametreler    : flex-direction | flex-wrap
+    Değerler        : row & row-reverse & column & column-reverse | nowrap & wrap & wrap-reverse | initial
+    
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-flow:row & row-reverse & column & column-reverse | nowrap & wrap & wrap-reverse;
+    }
+    flex-flow:column wrap;
+
+    **---**--**---**
+
+    flex-basis      : Esnek kutu içerisindeki element veya elementlerin başlangıç uzunluğu değerlerini belirler.
+    Değerler        : auto | number | initial
+    
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-basis:50px;
+    }
+
+    **---**--**---**
+
+    flex-grow       : Esnek kutu içerisindeki element veya elementlerin diğer elementlere göre büyüklük oranının ne şekilde olması gerektiğini belirler.
+    Değerler        : number | initial
+    
+    number          : varsayılan değer 0 (sıfır)
+    
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-grow:1;
+    }
+    .Bir{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-grow:2;
+    }
+
+    **---**--**---**
+
+    flex-shrink     : Esnek kutu içerisindeki element veya elementlerin, diğer elementlere göre küçüklük/büzülme oranının ne şekilde olması gerektiğini belirler.
+    Değerler        : number | initial
+
+    number          : varsayılan değer 1
+
+    #AnaEleman{
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-shrink:1;
+    }
+    .Bir{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+        prefix'ler-- // web-kit & moz & o & ms
+        flex-shrink:3;
+    }
+
+    !!!flex-grow özelliği kullanıldığında flex-shrink özelliği dikkate alınmaz!!!
+    
+    **---**--**---**
+
+    flex        : Esnek kutu içerisindeki element veya elementlerin diğer elementlere göre büyüklük oranını ya da küçüklük/büzülme oranını ya da başlangıç uzunluğu değerini belirler.
+    Değerler    : flex-grow | flex-shrink | flex-basis | auto | initial
+
+    flex : 0 | 1 | auto; // varsayılan değer.
+
+    flex: 1; 
+
+    **---**--**---**
+
+    align-items : Esnek kutu içerisinde bulunan elementlerin hizalama özelliklerini belirler.
+    Değerler    : stretch | center | flex-start | flex-end | baseline | initial
+
+    stretch     : Uzat (varsayılan değer)
+    center      : Orta
+    flex-start  : Esnek Başlangıç
+    flex-end    : Esnek Bitiş
+    baseline    : Başlangıç
+
+    #AnaEleman{
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+
+        prefix'ler-- // web-kit & moz & o & ms
+        align-items: stretch | center | flex-start | flex-end | baseline;
+    }
+    .IcElemanlar{
+        border:thin solid grey;
+        
+        prefix'ler-- // web-kit & moz & o & ms
+        flex:1;
+        
+    }
+
+    **---**--**---**
+
+    align-self  : Esnek kutu içerisinde bulunan ve seçilen eleman veya elementlerin hizalama özelliklerini belirler.
+    Değerler    : auto | stretch | center | flex-start | flex-end | baseline | initial
+
+    prefix'ler-- // web-kit & moz & o & ms
+
+    **---**--**---**
+
+    align-content   : Esnek kutu içerisinde bulunan elementler tüm alanı kullanmadığında ve satır kırılma olduğunda, elementlerin hizalama özelliklerini belirler.
+    Değerler        : stretch | center | flex-start | flex-end | space-between | space-around | initial
+
+    space-between   : Boşluk arasında.
+    space-around    : Boşluk etrafında.
+
+    prefix'ler-- // web-kit & moz & o & ms
+
+    **---**--**---**
+
+    justify-content     : Esnek kutuların içerisinde bulunan elementler tüm alanı kaplamadığında, elementlerin arasındaki hizalama özelliklerini belirler.
+    Değerler            : flex-start | flex-end | center | space-between | space-around | initial
+
+    prefix'ler-- // web-kit & moz & o & ms
+
+    **---**--**---**
+
+    order               : Esnek kutu içerisinde bulunan element veya elementlerin, diğer elementlere göre sıralama özelliklerini belirler.
+    Değerler            : number | initial |
+
+    prefix'ler-- // web-kit & moz & o & ms
+
+    #AnaEleman{
+
+        prefix'ler-- // web-kit & moz & o & ms
+        display:flex;
+
+        width:300px;
+        height:300px;
+        border:thin solid grey;
+    }
+    .IcElemanlar{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+
+        prefix'ler-- // web-kit & moz & o & ms
+        flex:1;
+    }
+    .Bir{
+        width:50px;
+        height:50px;
+        border:thin solid grey;
+
+        prefix'ler-- // web-kit & moz & o & ms
+        order:5; //sondan 5. sıra
+    }
+    order:-3; //baştan 3. sıra
+
+    **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---** **---**--**---**
+
+    prefix'ler-- // web-kit & moz & o & ms
+    display:grid;
+    display:inline-grid; 
+
+    **---**--**---**
+
+    grid-template-column    : Izgara düzeni içerisindeki element veya elementler için oluşturulması gereken sütun adedini ve sütun boyutu genişliğini belirler.
+    Değerler                : none | auto | max-content | min-content | length | initial
+    
+    max-content             : Maksimum içerik
+    min-content             : Minimum içerik
+
+    .AnaEleman{
+        display:grid;
+        width:500px;
+        padding:10px;
+        border:1px solid blue;
+        grid-template-columns:none | auto | max-content | min-content | length;
+    }
+    .IcElemanlar{
+        border:1px solid red;
+        padding:10px;
+    }
+    grid-template-columns:none;
+    grid-template-columns:auto;
+    grid-template-columns:auto auto auto; //3 sütuna böl genişlik değerini otomatik al.
+    grid-template-columns:max-content max-content max-content max-content; // içerik kadar genişlik kaplıyor ve belirttiğim(4) sütun sayısına göre ızgara oluyor.
+    grid-template-columns:min-content min-content; // white-space'den sonra taştığında aşağı düşürür ve belirttiğim(4) sütun sayısına göre ızgara oluyor.
+    grid-template-columns:150px 200px 300px; // length
+    grid-template-columns:150px auto; 
+    grid-template-columns:150px auto 200px;
+    grid-template-columns:repeat(10,100px);
+    grid-template-columns:repeat(4,50px) auto;
+    grid-template-columns:repeat(4,50px) auto 150px;
+    grid-template-columns:repeat(4,50px 100px auto);
+    grid-template-columns:repeat(4,25px) repeat(2,100px) repeat(1,200px auto);
+
+    **---**--**---**
+
+    grid-template-rows  : Izgara düzeni içerisindeki element veya elementler için oluşturulması gereken satır boyutu yüksekliğni belirler.
+    Değerler            : none | auto | max-content | min-content | length | initial
+    
+    .AnaEleman{
+        display:grid;
+        width:500px;
+        padding:10px;
+        border:1px solid blue;
+        grid-template-columns:max-content | min-content | length;
+    }
+    .IcElemanlar{
+        border:1px solid red;
+        padding:10px;
+
+        prefix'ler-- // web-kit & moz & o & ms
+        writing-mode: vertical-lr; // horizontal-lr & horizontal-rl & vertical-lr & vertical-rl
+        }
+
+    **---**--**---**
+
+    grid-column-gap : Izgara düzeni içerisindeki element veya elementler için oluşturulmuş olan sütunların aralarındaki boşluk değerini belirler.
+    Değerler        : length | initial
+
+    grid-column-gap:5px;
+
+    **---**--**---**
+
+    grid-row-gap    : Izgara düzeni içerisindeki element veya elementler için oluşturulmuş olan satırların aralarındaki boşluk değerini belirler.
+    Değerler        : length | initial
+
+    grid-row-gap:50px;
+
+    **---**--**---**
+
+    grid-gap        : Izgara düzeni içerisindeki element veya elementler için oluşturulmuş olan satırların ve sütunların aralarındaki boşluk değerini belirler.
+    Parametreler    : grid-row-gap | grid-column-gap
+    Değerler        : length | inital
+
+    grid-gap:50px; // hem satır hem sütun araları 50px
+    grid-gap:50px 20px; // satır araları 50px sütun araları 20px
+
+    **---**--**---**
+
+    grid-auto-flow  : Izgara düzeni içerisindeki element veya elementler için otomatik yerleşim algoritması özelliklerini belirler.
+    Değerler        : row | column | row dense | column dense | initial
+
+    row dense       : Satır yoğunluğu
+    column dense    : Sütun yoğunluğu
+
+    .AnaEleman{
+        display:grid;
+        width:500px;
+        padding:10px;
+        border:1px solid blue;
+        grid-template-columns:auto auto auto;
+        grid-template-rows:auto auto auto auto;
+        grid-gap:5px 5px;
+        grid-auto-flow:row | column | row dense | column dense;
+    }
+    .IcElemanlar{
+        border:1px solid red;
+        padding:10px;
+    }
+
+    **---**--**---**
+
+    grid-auto-columns   : Izgara düzeni içerisindeki element veya elementler için oluşturulması gereken sütunların varsayılan genişliğini belirler.
+    Değerler            : auto | max-content | min-content | length | initial
+    
+    **---**--**---**
+
+    grid-auto-rows  : Izgara düzeni içerisindeki element veya elementler için oluşturulması gereken satırların varsayılan yüksekliğini belirler.
+    Değerler        : auto | max-content | min-content | length | initial
+    
+    **---**--**---**
+
+    grid-column-start   : Izgara düzeni içerisindeki elementin kaçıncı sütundan başlaması gerektiğini belirler
+    Değerler            : auto | column-line | initial
+
+    .AnaEleman{
+        display:grid;
+        border:1px solid red;
+        padding:10px;
+        grid-template-columns:auto auto auto auto;
+    }
+    .IcElemanlar{
+        border:1px solid blue;
+        padding:10px;
+    }
+    .Bir{
+        grid-column-start:3;
+    }
+    **---**--**---**
+
+    grid-column-end     : Izgara düzeni içerisindeki elementin kaçıncı sütundan bitmesi gerektiğini belirler
+    Değerler            : auto | column-line | initial
+    
+    .AnaEleman{
+        display:grid;
+        border:1px solid red;
+        padding:10px;
+        grid-template-columns:auto auto auto auto;
+    }
+    .IcElemanlar{
+        border:1px solid blue;
+        padding:10px;
+    }
+    .Bir{
+        grid-column-end:span 2; //belirtilen sütuna varınca biter.
+    }
+
+    **---**--**---**
+
+    grid-column     : Izgara düzeni içerisindeki elementin kaçıncı sütundan başlaması gerektiğini ve kaçıncı sütunda bitmesi gerektiğini belirler.
+    Parametreler    : grid-column-start | grid-column-end
+    Değerler        : auto | column-line | initial
+
+    .AnaEleman{
+        display:grid;
+        border:1px solid red;
+        padding:10px;
+        grid-template-columns:repeat(5,auto);
+        grid-gap:5px;
+    }
+    .IcElemanlar{
+        border:1px solid blue;
+        padding:10px;
+    }
+    .Bir{
+        grid-column-start:1 // belirtilen sütundan başlar.
+        grid-column-end:span 2; //belirtilen sütuna varınca biter.
+    }
+    .Iki{grid-column:2;}
+    .Uc{grid-column:span 2;} // olduğu yerden başlar 2 sütunluk yer kaplar
+    .Dort{grid-column:2/5;} // 2.sütundan başlar 5. sütuna varınca biter.
+    .Bes{grid-column:2/ span 4;} 2.sütundan başla, 4 tanelik sütun kapla
+    .Alti{grid-column:span 2 / 4;} 2 sütunluk alan kapla, 4 de bitmiş gibi yap.
+    .Yedi{grid-column:span 2 / 1;} 2 sütunluk alan kapla, 1 de bitmiş gibi yap. ve sütun sayısını arttırır.
+    .Sekiz{grid-column:span 2 / span 8;} ilkinde span varsa ikinci span değeri geçersiz sayılır.
+    
+    
+    **---**--**---**
+
+    grid-row-start  : Izgara düzeni içerisindeki elementin kaçıncı sıradan başlaması gerektiğini belirler.
+    Değerler        : auto | row-line | initial
+
+    .AnaEleman{
+        display:grid;
+        grid-template-columns:repeat(3,auto);
+        grid-gap:5px;
+    }
+    .IcElemanlar{
+        border:1px solid blue;
+        padding:10px;
+    }
+    .Bir{
+        grid-column-start:span 3;
+        grid-row-start:span 3; // iki span'ı birleştirmez bunu ayrı bir özellik sağlıyor.
+    }
+
+    **---**--**---**
+
+    grid-row-end    : Izgara düzeni içerisindeki elementin kaçıncı sıradan önce biteceğini belirler.
+    Değerler        : auto | row-line | initial
+    
+    .Bir{
+        grid-row-end:3; // Birinci sütun da olmayan herhangi bir satır bu özellik kullanıldığında birinci sütundaymış gibi baz alınır.
+    }
+    grid-row-end:span 3;
+
+    **---**--**---**
+
+    grid-row    : Izgara düzeni içerisindeki elementin kaçıncı satırda başlaması gerektiğini ve kaçıncı satırdı bitmesi gerektiğini belirler.
+    Parametreler: grid-row-start | grid-row-end
+    Değerler    : auto | row-line | initial
+
+    **---**--**---**
+
+    grid-area       :   Izgara düzeni içerisindeki elementin tüm satır ve sütun işlemleri için alan yerleştirme özelliklerini belirler. Aynı zamanda ızgara düzeni içerisindeki elementin alan adı değerini
+                        belirler.
+    Parametreler    :   grid-row-start | grid-column-start | grid-row-end | grid-column-end
+    Değerler        :   areaname | initial
+    
+    .Bir{
+        //  grid-column-start:3;
+            grid-column-end:5;
+            grid-row-start:2;
+            grid-row-end:5;
+         //
+         grid-area:2/3/5/3;
+    }
+    grid-area:2/3/span 5/3;
+    grid-area:2/span 3/5/3;
+
+    **---**--**---**
+
+    grid-template-areas : Izgara düzeni içerisindeki alan adı tanımlanmış olan elementin tüm satır ve sütun işlemleri için alan yerleştirme özelliklerini belirler.
+    Değerler            : none | area names
+
+    .item1 { grid-area: header; }
+    .item2 { grid-area: menu; }
+    .item3 { grid-area: main; }
+    .item4 { grid-area: right; }
+    .item5 { grid-area: footer; }
+
+    .grid-container {
+    display: grid;
+    grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+    }
+
+    .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    }
+
+    **---**--**---**
+
+    grid-template   : Izgara düzeni içerisindeki element veya elementler için, tüm satır ve sütun işlemlerinin yanı sıra alan yerleştirme özelliklerini belirler.
+    Parametreler    : grid-template-rows | grid-template-columns | grid-template-areas | initial | inherit
+
+    grid-template: none|grid-template-rows / grid-template-columns|grid-template-areas;
+    
+    grid-template:100px 200px 300px / auto auto auto auto;
+    
+    **---**--**---**
+
+    grid            : Izgara düzeni içerisindeki element veya elementler için, gelişmiş tüm ve sütun işlemlerinin yanı sıra alan yerleştirme özelliklerini belirler.
+    Parametreler    : grid-template-rows / grid-template-columns / grid-template-areas 
+    Parametreler    : grid-template-rows / [grid-auto-flow] / grid-template-columns 
+    Parametreler    : [grid-auto-flow] / grid-template-rows / grid-template-columns
+    Değerler        : none | initial
+
+    grid: 50px / 100px;
+    grid: 50px / auto-flow 100px;
+    grid: auto flow 50px/ 100px;
+
+    grid: 50px/repeat(6, auto);
+
+    !!!grid içerisinde auto flow kullanmamalısın önerilmez!!!
+    */
