@@ -1,0 +1,230 @@
+/* 
+
+    transform   : HTML elementinin 2D veya 3D dönüştürme özelliklerini belirler.
+    Değerler    : none | translate() | translate3d() | translateX() | translateY() | translateZ() | skew() | skewX() | skewY() | scale() | scale3d() | scaleX() | scaleY() | scaleZ()
+                  rotate() | rotate3d() | rotateX() | rotateY | rotateZ | perspective() | matrix() | matrix3d() | initial
+    
+    none            : Değer yok. (varsayılan değer)
+    translate()     : HTML elementinin x ve y ekseni doğrultusunda konumunu değiştirir.
+    translate3d()   : HTML elementinin x, y ve z ekseni doğrultusunda konumunu değiştirir.
+    translateX()    : HTML elementinin x ekseni doğrultusunda konumunu değiştirir.
+    translateY()    : HTML elementinin y ekseni doğrultusunda konumunu değiştirir.
+    translateZ()    : HTML elementinin z ekseni doğrultusunda konumunu değiştirir.
+    skew()          : HTML elementini x ve y ekseni doğrultusunda eğer.
+    skewX()         : HTML elementini x ekseni doğrultusunda eğer.
+    skewY()         : HTML elementini y ekseni doğrultusunda eğer.
+    scale()         : HTML elementini x ve y ekseni doğrultusunda boyutunu değiştirir.
+    scale3d()       : HTML elementini x, y ve z ekseni doğrultusunda boyutunu değiştirir.
+    scaleX()        : HTML elementini x ekseni doğrultusunda boyutunu değiştirir.
+    scaleY()        : HTML elementini y ekseni doğrultusunda boyutunu değiştirir.
+    scaleZ()        : HTML elementini z ekseni doğrultusunda boyutunu değiştirir.
+    rotate()        : HTML elementini saat yönü doğrultusunda döndürür.
+    rotate3d()      : HTML elementini x, y ve z ekseni doğrultusunda döndürür.
+    rotateX()       : HTML elementini x ekseni doğrultusunda döndürür.
+    rotateY         : HTML elementini y ekseni doğrultusunda döndürür.
+    rotateZ         : HTML elementini z ekseni doğrultusunda döndürür.
+    perspective()   : HTML elementinin perspektif görünüşünü belirler.
+    matrix()        : HTML elementine 6 farklı dönüşüm özelliği belirler. // scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()
+    matrix3d()      : HTML elementine 4x4 dönüşüm özelliği belirler. // (https://www.codepen.io/fta/pen/ifnqH)
+    
+    transform:translate(100px, 200px) x, y
+    transform:translate3d(100px, 200px, 3px) x, y, z
+    transform:translate3d(100px, 200px, -280px) x, y, z // bizden uzaklaştığı için küçülür.
+    transform:translateX(100px); x
+    transform:translateY(50px); y
+    transform:translateZ(4px); z
+    transform:skew(1deg); x
+    transform:skew(45deg, 3deg); x, y
+    transform:skewX(70deg); x
+    transform:skewY(-56deg); y
+    transform:scale(0.5); x, y // tek parametre ile hem x hem y değeri alır.
+    transform:scale(1, 0.7); x, y
+    transform:scale3d(0.8, 1.2, -2); x, y, z
+
+    --- ** --- ** --- 
+    transform:scaleX(0.8); x
+    transform:scaleY(1.2); y
+    transform:scaleZ(1.2); z
+    transform:rotate(10deg); saat yönünde 10derece döndü 
+    transform:rotate3d(3, 25, 4, 25deg); x, y, z, dönüş derecesi
+    transform:rotateX(100deg); x dönüş derecesi
+    transform:rotateY(65deg); y dönüş derecesi
+    transform:rotateX(44deg); Z dönüş derecesi
+    perspective:150px;
+    transform:matrix(1.5, 0.5, 0.5, 0.8, 10, 10); scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()
+                                                    1.5     0.5deg   0.5deg     0.8         10px        10px
+
+    **---**--**---**
+
+    transform-origin    : HTML elementinin dönüştürme sonrasındaki konum özelliklerini belirler.
+    Parametreler        : x | y | z
+    varsayılan  değer   : 50%  50%  0;
+    değerler            : lenght | % | initial
+
+    div{
+        transform:rotate(50deg);
+
+        !!!prefixli yazılmalıdır!!!
+        transform-origin: 100% 100% 0;
+    }
+
+    **---**--**---**
+
+    transform-origin    : İç içe geçmiş HTML elementlerinin 3D dönüştürme sonrasındaki, 3D boşluğunda konumlandırılmış veya element düzleminde düzleştirilmiş olup olmadığı durumunu belirler.
+    Değerler            : flat | preserve-3d | initial
+    flat                : düz
+    preserve-3d         : 3d perspektif
+
+
+    **---**--**---**
+
+    perspective : HTML elementinin 3D dönüştürme sonrasındaki perspektif derinliği özelliklerini belirler.
+    Değerler    : none | length | initial
+    
+    **---**--**---**
+
+    perspective-origin  : HTML elementinin 3D dönüştürme sonrasındaki perspektif derinliği konum özelliklerini belirler.
+    Parametreler        : x | y
+    varsayılan değer    : 50% | 50%
+    Değerler            : length | % | initial
+
+    **---**--**---**
+
+    backface-visibility : Belirtilen HTML elementinin dönüştürme, geçiş veya animasyon işlemlerinde arka yüzeyinin görüntülenme veya gizlenme özelliklerini belirler.
+    Değerler            : visible | hidden | initial  
+
+    **---**--**---**
+
+    transition                  : HTML elementinin tüm geçiş özelliklerini belirler.
+    Parametreler                : transition-property | transition-duration | transition-timing-function | transition-delay
+    Değerler                    : property value (özellik değeri) | initial 
+    transition-property         : CSS özellik adı
+    transition-duration         : Geçiş süresi
+    transition-timing-function  : Hız eğrisi
+    transition-delay            : Duraksama süresi
+
+    default value               : all 0s ease 0s;
+
+    **---**--**---**
+
+    transition-property : HTML elementine tanınlanmış olan geçiş özelliği için, kullanılması gereken CSS'de tanımlı olan özellik adını belirler.
+    Değerler            : all | property | initial
+    all                 : Bütün Css özellikleri
+    property            : seçili veya seçilmiş özellikler
+
+    **---**--**---**
+
+    transition-duration : HTML elementine tanınlanmış olan geçiş özelliğinin kaç saniye veya kaç milisaniye sonunda tamamlanacağını belirler.
+    Değerler            : time | initial
+    time                : Zaman (Saniye: s, milisaniye:  ms)
+
+    **---**--**---**
+
+    transition-delay    : HTML elementine tanınlanmış olan geçiş özelliğinin kaç saniye veya kaç milisaniye sonra başlayacağını belirler.
+    Değerler            : time | initial
+    time                : Zaman (Saniye: s, milisaniye:  ms)
+
+    **---**--**---**
+
+    transition-timing-function  : HTML elementine tanınlanmış olan geçiş özelliğinin, hız eğrisi özelliklerini belirler.
+    değerler                    : ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps() | cubic-bezier() | initial
+    ease                        : Yavaş olarak başlayarak hızlanır ve sona doğru yavaşlar. 
+    linear                      : Başlangıçtan sona kadar aynı hız.
+    ease-in                     : Yavaş olarak başlayarak sona doğru hızlanır.
+    ease-out                    : Hızlı olarak başlayarak sona doğru yavaşlar.
+    ease-in-out                 : Yavaş olarak başlayarak ortada hızlanır ve sona doğru tekrar yavaşlar.
+    step-start                  : Geçiş süresine bakılmaksızın doğrudan sona ulaşır.
+    step-end                    : Geçiş süresine bakılarak, geçiş süresi kadar bekleyerek doğrudan sona ulaşır.
+    steps                       : Başlangıç ve bitiş arasında adımlamalı geçiş işlemi yapar.
+    cubic-bezier                : Bezier eğrisi.
+
+    341.DERS
+
+    **---**--**---**
+
+    animation                   : HTML elementinin tüm animasyon özelliklerini belirler.
+    Parametreler                : animation-name | animation-duration | animation-timing-function | animation-delay | animation-iteration-count | animation-direction | animation-fill-mode | animation-play-state
+    Değerler                    : animation value | initial
+    varsayılan değerler         : none 0 ease 0 1 normal none running
+
+    
+    
+    
+    
+    animation:deneme 4s linear 0s infinite normal none running
+
+    @keyframes deneme {
+        from{
+            left:0px;
+        }
+        to{
+            left:40px;
+        }
+    }
+    
+    **---**--**---**
+    
+    @keyframes  : HTML elementine tanımlanmış olan animasyonun, animasyon sırasındaki ara aşamalarını belirler.
+    Değerler    : from | to | %
+    from        : Başlangıç
+    to          : Bitiş
+
+    **---**--**---**
+
+    animation-name              : HTML elementine atanmış olan animasyonun, @keyframes özelliği için isim tanımlamasını belirler.
+    Değerler                    : none | key-frames-name | initial
+    key-frames-name             : Animasyon aşamaları adı.
+    
+    **---**--**---**
+
+    animation-duration          : HTML elementine tanımlanmış olan animasyon döngüsünün, kaç saniye veya kaç milisaniye sonunda tamamlanacağını belirler.
+    Değerler                    : time | initial
+
+    **---**--**---**
+
+    animation-timing-function   : HTML elementine tanımlanmış olan animasyon döngüsünün hız eğrisi özelliklerini belirler.
+    Değerler                    : ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps() | cubic-bezier() | initial 
+
+
+    **---**--**---**
+
+    animation-delay             : HTML elementine tanımlanmış olan animasyonun, kaç saniye veya kaç milisaniye gecikme sonunda başlayacağını belirler.
+    Değerler                    : time | initial
+    
+    **---**--**---**
+
+    animation-iteration-count   : HTML elementine tanımlanmış olan animasyonun kaç defa oynatılacağını belirler.
+    Değerler                    : number | infinite | initial
+    infinite                    : sonsuz'a kadar. döngü
+
+    **---**--**---**
+
+    animation-direction : HTML elementine tanımlanmış olan animasyonun oynatma yönü özelliklerini belirler.
+    Değerler            : normal | reverse | alternate | alternate-reverse | initial
+    reverse             : Ters
+    alternate           : Alternatif oynatım.  **
+    alternate-reverse   : alternatif ters oynatım
+
+    **---**--**---**            
+
+    animation-fill-mode         : HTML elementine tanımlanmış olan animasyonun oynatma işlemi tamamlandığında, HTML elementinin konum özelliklerini belirler.
+    Değerler                    : none | forwards | backwards | both | initial
+    forwards                    : ileride kal // biz başa dönmesini isteriz
+    backwards                   : geride kal // biz son değer de kalmasını isteriz
+    both                        : her ikisini de uygula // son değer neyse CSS ona yönlendirir
+
+    **---**--**---**
+
+    animation-play-state        : HTML elementine tanımlanmış olan animasyonun çalışıp çalışmadığını veya duraklatılmış olup olmadığını belirler.
+    Değerler                    : running | paused | initial
+
+
+    ***---***---***---***
+
+    HTML'in <meta> tag'ı
+
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    ***---***---***---***
+
+    */
